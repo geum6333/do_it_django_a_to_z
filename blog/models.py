@@ -8,6 +8,8 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     head_image = models.ImageField(upload_to='blog/images/%Y/%m/%d/', blank=True)
+    file_upload = models.FileField(upload_to='blog/files/%Y/%m/%d/', blank=True)
+
     # auther: 추후 작성 예정
     def __str__(self):
         return f'[{self.pk}]{self.title}'
