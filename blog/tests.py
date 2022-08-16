@@ -10,7 +10,7 @@ class TestView(TestCase):
     def navbar_test(self, soup):
         navbar = soup.nav
         self.assertIn('Blog', navbar.text)
-        self.assertIn('About me', navbar.text)
+        self.assertIn('About Me', navbar.text)
 
         logo_btn = navbar.find('a', text='스마트 부산')
         self.assertEqual(logo_btn.attrs['href'], '/')
@@ -21,7 +21,7 @@ class TestView(TestCase):
         blog_btn = navbar.find('a', text='Blog')
         self.assertEqual(blog_btn.attrs['href'], '/blog/')
 
-        about_me_btn = navbar.find('a', text='About me')
+        about_me_btn = navbar.find('a', text='About Me')
         self.assertEqual(about_me_btn.attrs['href'], '/about_me/')
 
     def test_post_list(self):
@@ -74,7 +74,7 @@ class TestView(TestCase):
         navbar = soup.nav
 
         self.assertIn('Blog', navbar.text)
-        self.assertIn('About me', navbar.text)
+        self.assertIn('About Me', navbar.text)
 
         self.assertIn(post_001.title, soup.title.text)
 
