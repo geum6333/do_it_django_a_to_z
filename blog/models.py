@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 import os
 
+
+
 class Post(models.Model):
     title = models.CharField(max_length=50)  # 게시글 제목
     hook_text = models.CharField(max_length=100, blank=True)
