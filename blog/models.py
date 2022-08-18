@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdown
 import os
 
 class Category(models.Model):
@@ -28,7 +30,7 @@ class Tag(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=50)  # 게시글 제목
     hook_text = models.CharField(max_length=100, blank=True)
-    content = models.TextField()  # 게시글 본문 내용
+    content = MarkdownxField()  # 게시글 본문 내용
     
     created_at = models.DateTimeField(auto_now_add=True)  # 게시글 게시 날짜
     updated_at = models.DateTimeField(auto_now=True)
@@ -50,5 +52,7 @@ class Post(models.Model):
         return os.path.basename(self.file_upload.name)
     def get_file_ext(self):
         return self.get_file_name().split('.')[-1]
+    def get_content_markdown(self):
+        return markdown(self.content)
 # Create your models here.
 
