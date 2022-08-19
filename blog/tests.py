@@ -282,11 +282,11 @@ class TestView(TestCase):
             author=self.user_trump,
         )
 
-        response =self.client.get('/blog/search/파이썬/')
+        response = self.client.get('/blog/search/파이썬/')
         self.assertEqual(response.status_code, 200)
         soup = BeautifulSoup(response.content, 'html.parser')
 
-        main_area = soup.find('div',id='main-area')
+        main_area = soup.find('div', id='main-area')
 
         self.assertIn('Search: 파이썬 (2)', main_area.text)
         self.assertNotIn(self.post_001.title, main_area.text)
